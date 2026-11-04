@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Data Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <a class="brand" href="/">Student<span>Predict</span></a>
+        <div class="nav-links"><a href="/">Home</a><a href="/analysis">Data Analysis</a></div>
+    </nav>
+
+    <main class="container">
+        <section class="hero">
+            <p class="eyebrow">DATASET OVERVIEW</p>
+            <h1>Student Data <span>Analysis</span></h1>
+            <p class="intro">A summary of the illustrative CSV dataset used to train the model.</p>
+        </section>
+
+        <section class="stats-grid">
+            <article class="stat-card"><span>Total records</span><strong>{{ total }}</strong></article>
+            <article class="stat-card"><span>Pass examples</span><strong>{{ pass_count }}</strong></article>
+            <article class="stat-card"><span>Needs improvement</span><strong>{{ improvement_count }}</strong></article>
+            <article class="stat-card"><span>Pass share in dataset</span><strong>{{ pass_percentage }}%</strong></article>
+        </section>
+
+        <section class="panel">
+            <h2>Average student details</h2>
+            <div class="details">
+                <div><span>Study hours per day</span><strong>{{ averages.study_hours }}</strong></div>
+                <div><span>Attendance</span><strong>{{ averages.attendance }}%</strong></div>
+                <div><span>Previous marks</span><strong>{{ averages.previous_marks }}</strong></div>
+                <div><span>Assignment marks</span><strong>{{ averages.assignment_marks }}</strong></div>
+            </div>
+            <p class="disclaimer">These figures describe only the sample CSV file included with this project. They are not statistics about all students.</p>
+            <a class="button button-link" href="/">Back to Prediction</a>
+        </section>
+    </main>
+    <footer>Student Performance Prediction · Data Science Project</footer>
+</body>
+</html>

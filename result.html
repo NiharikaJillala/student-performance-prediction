@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <a class="brand" href="/">Student<span>Predict</span></a>
+        <div class="nav-links"><a href="/">Home</a><a href="/analysis">Data Analysis</a></div>
+    </nav>
+
+    <main class="container narrow">
+        <section class="panel result-panel">
+            <p class="eyebrow">PREDICTION RESULT</p>
+            <h1 class="{% if result == 'Likely to Pass' %}success-text{% else %}warning-text{% endif %}">{{ result }}</h1>
+            <p class="muted">This is the category predicted by the Decision Tree model.</p>
+
+            <div class="confidence">
+                <span>Model confidence for selected class</span>
+                <strong>{{ confidence }}%</strong>
+            </div>
+            <div class="bar"><div style="width: {{ confidence }}%"></div></div>
+
+            <h2>Your submitted details</h2>
+            <div class="details">
+                <div><span>Study hours</span><strong>{{ study_hours }}</strong></div>
+                <div><span>Attendance</span><strong>{{ attendance }}%</strong></div>
+                <div><span>Previous marks</span><strong>{{ previous_marks }}</strong></div>
+                <div><span>Assignment marks</span><strong>{{ assignment_marks }}</strong></div>
+            </div>
+
+            <p class="disclaimer">Model confidence is not the probability that a student will actually pass. This classroom model uses a small illustrative dataset.</p>
+            <a class="button button-link" href="/">Make Another Prediction</a>
+            <a class="text-link" href="/analysis">View dataset analysis</a>
+        </section>
+    </main>
+    <footer>Student Performance Prediction · Data Science Project</footer>
+</body>
+</html>
